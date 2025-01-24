@@ -1,0 +1,116 @@
+@charset "UTF-8";
+/*header*/
+.header_section{
+    position: fixed;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    background: rgb(var(--deep2-blue));
+    z-index: 1;
+}
+.header_inner{
+    width: calc(100% - 40px);
+    max-width: 1000px;
+    height: auto;
+    min-height: 20px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+p.header_title{
+    font-weight: bold;
+    line-height: 20px;
+    color: rgb(var(--lite-blue));
+}
+
+/*main 공통*/
+.common_whole{
+    width: 100%;
+    min-height: calc(100vh - 40px);
+    height: auto;
+    margin: 40px auto 0 auto;
+}
+.common_inner{
+    width: calc(100% - 40px);
+    max-width: 700px;
+    height: auto;
+    margin: 0 auto;
+}
+p.common_subtitle{
+    color: rgba(var(--deep-blue),0.6);
+    text-align: center;
+    margin: 4px auto 40px auto;
+}
+h1{
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+}
+input[type=file]{
+    cursor: pointer;
+}
+input[type=file]::file-selector-button{
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: rgb(var(--deep-blue));
+    padding: 2px 10px;
+    border: 1px solid rgb(var(--deep-blue));
+    border-radius: 5px;
+    background: rgb(var(--bg-none));
+    margin-right: 10px;
+    cursor: pointer;
+}
+input[type=file]:hover::file-selector-button{
+    background: rgba(var(--origin-blue),0.1);
+}
+
+/*footer*/
+.footer_section{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    background: rgba(var(--deep2-blue),0.1);
+}
+.footer_inner{
+    width: calc(100% - 40px);
+    max-width: 1000px;
+    height: auto;
+    min-height: 20px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.footer_top{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer_top p{
+    width: max-content;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(var(--real-black));
+}
+.footer_top p span{
+    font-size: 14px;
+    line-height: 16px;
+    color: rgba(var(--real-white),0.9);
+    background: rgb(var(--deep2-blue));
+    padding: 2px 4px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.footer_top + p{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 300;
+    margin: 10px auto 0 auto;
+    text-align: center;
+}
