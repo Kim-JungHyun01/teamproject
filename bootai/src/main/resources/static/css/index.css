@@ -75,7 +75,8 @@
 #result{
     width: 100%;
     height: auto;
-    margin: 40px auto 80px auto;
+    margin: 40px auto 0 auto;
+    padding-bottom: 80px;
 }
 #result p{
     color: rgb(var(--deep-blue));
