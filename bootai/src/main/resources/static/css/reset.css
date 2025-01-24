@@ -1,0 +1,67 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@charset "UTF-8";
+:root {/*기본 색상 지정*/
+  --origin-red: 187,0,0;
+  --lite-gray: 221,221,221;
+  --real-gray: 153,153,153;
+  --lite-white: 240,240,240;
+  --real-white: 255,255,255;
+  --lite-black: 51,51,51;
+  --real-black: 0,0,0;
+  --bg-none: transparent;
+
+  --bg-blue: 219,220,227;
+  --lite-blue: 221,233,249;
+  --origin-blue: 75,137,220;
+  --deep-blue: 10,25,100;
+  --deep2-blue: 5,14,59;
+}
+*{
+    margin: 0;
+	padding: 0;
+    border: 0;
+	cursor: default;
+    list-style: none;
+    font-family: 'Pretendard Variable';
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: rgb(var(--lite-black));
+    font-style: normal;
+    text-decoration: none;
+    outline: 0;
+    word-break: auto-phrase;
+    background-color: var(--bg-none);
+}
+/* reset */
+.bold_title{
+    font-family: 'Pretendard Variable';
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: bold;
+    color: rgb(var(--deep-blue));
+}
+body{
+    -ms-overflow-style: none;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    background-color: rgba(var(--origin-blue),0.05);
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+img{
+    border: 0;
+}
+select,
+button,
+button *,
+a,
+a *{
+	cursor: pointer;
+}
+input,
+textarea{
+	cursor: text;
+}

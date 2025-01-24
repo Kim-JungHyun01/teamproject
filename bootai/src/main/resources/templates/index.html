@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--수정된 부분 총 3개)-->
+<!--수정1 시작-->
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>1석3조:부유물 탐지 프로젝트</title>
+        <link rel="shortcut icon" href="/image/favicon.ico">
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/index.css">
+    </head>
+    <body>
+        <header th:replace="~{common/header::header}"></header>
+        <div class="common_whole index_whole">
+            <img src="" alt="업로드 이미지" id="index_img" class="index_img">
+            <div class="common_inner">
+                <img src="/image/logo.png" alt="로고 아이콘" class="logo_img">
+                <h1>하수도 부유물 탐지</h1>
+                <p class="common_subtitle">분석하고 싶은 부유물 이미지 혹은 영상을 올려주세요.</p>
+                <form method="post" enctype="multipart/form-data" id="fileUploadForm">
+                    <div>
+                        <p>데이터</p>
+                        <input type="text" name="message" placeholder="전송할 데이터 문구를 입력.">
+                    </div>
+                    <div>
+                        <p>파일</p>
+                        <input type="file" onchange="fileChange(event)" id="data_file" name="file"/>
+                    </div>
+                    <input type="button" value="파일 업로드"/>
+                </form>
+                <!--여기에 요청 결과가 출력되어야 합니다.-->
+                <div id="result"></div>
+                <!--<a href="ai">실시간 스트리밍</a>-->
+            </div>
+        </div>
+        <footer th:replace="~{common/footer::footer}"></footer>
+        <!--수정1 끝-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            /*수정2 시작*/
+            function fileChange(event){
+                var reader = new FileReader();
+                reader.onload = function(event){
+                    document.getElementById('index_img').setAttribute("src", event.target.result);
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            };
+            /*수정2 끝*/
+
+            var button = document.querySelector("input[type=button]");
+
+            button.addEventListener("click", function(){
+                var form = document.getElementById("fileUploadForm");
+                var form_data = new FormData(form);
+                button.disabled = true;
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open("POST", "http://localhost:80/java_service", true);// 자바서버
+
+                xhr.onload = function(){
+                    if(xhr.status >=200 && xhr.status < 300){
+                        console.log(xhr.responseText);
+                        try{
+                                var response = JSON.parse(xhr.responseText); //응답 json형태반환
+                                var resultDiv = document.getElementById("result"); //id = "result"의 값 가져오기
+                                /*수정3 시작*/
+                                resultDiv.innerHTML = "<p>"+response.message+"</p>"; //innerHTML : html 형식으로 가져오기
+                                /*수정3 끝*/
+
+                                var img_src = "data:image/png;base64," + response.image;
+                                var img = document.createElement("img");
+
+                                img.src = img_src;
+                                resultDiv.appendChild(img);
+                                button.disabled = false; //버튼활성화
+                                alert("이미지전달");
+                            }catch(e){
+                                console.error("json 파싱오류 : "+e.message);
+                                alert("응답데이터 처리중 오류가 발생");
+                                button.disabled = false; //버튼활성화
+                            }
+                    }else{
+                        console.error("ERROR : "+ xhr.statusText);
+                        alert("fail : "+xhr.statusText);
+                        button.disabled = false;
+                    }//end if
+                }//end xhr.onload
+
+                xhr.onerror = function(){
+                    console.error("ERROR : "+xhr.statusText);
+                    alert("fail : "+xhr.statusText);
+                    button.disabled = false;
+                }//end xhr.onerror
+
+                xhr.send(form_data);
+            })//end button click
+        </script>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+.index_whole{
+    position: relative;
+}
+.index_img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.05;
+}
+.common_inner{
+    padding-top: 40px;
+}
+.logo_img{
+    display: block;
+    min-width: 80px;
+    width: 80px;
+    height: auto;
+    background-size: contain;
+    margin: 0 auto 5px auto;
+}
+.index_whole form{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+.index_whole form div{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+.index_whole form div + div{
+    margin-top: 30px;
+}
+.index_whole form div p{
+    margin-bottom: 5px;
+}
+.index_whole form div input{
+    width: calc(100% - 22px);
+    height: auto;
+    padding: 7px 10px;
+    border: 1px solid rgba(var(--lite-gray),0.5);
+    border-radius: 5px;
+    background-color: rgb(var(--real-white));
+}
+.index_whole form div input[type="file"]{
+    padding: 6px 10px;
+}
+.index_whole form div input:hover{
+    box-shadow: 0 0 10px rgba(var(--real-black),0.05);
+}
+.index_whole form div input:focus{
+    border-color: rgb(var(--deep2-blue));
+}
+.index_whole form input[type="button"]{
+    display: block;
+    min-width: 100px;
+    width: 100px;
+    height: 40px;
+    color: rgb(var(--real-white));
+    background: rgb(var(--deep-blue));
+    border-radius: 5px;
+    margin: 20px 0 0 auto;
+    cursor: pointer;
+}
+.index_whole form input[type="button"]:hover{
+    background: rgb(var(--deep2-blue));
+    box-shadow: 0 0 10px rgba(var(--real-black),0.1);
+}
+.index_whole form input[type="button"]:focus{
+    background: rgb(var(--real-black));
+}
+#result{
+    width: 100%;
+    height: auto;
+    margin: 40px auto 0 auto;
+    padding-bottom: 80px;
+}
+#result p{
+    color: rgb(var(--deep-blue));
+    margin: 0 auto 5px auto;
+}
+#result img{
+    width: 100%;
+    height: auto;
+    background-size: contain;
+}
